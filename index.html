@@ -3,15 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
   <!-- <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png"> -->
-  
-  <title>The Oracle Solstice</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>The Oracle Solstice Game</title>
 </head>
 <body>
 
+<main id="game-universe">
 
+    <!-- PANTALLA 1: Introducción -->
+    <section id="screen-intro" class="intro">
+        <h1>The Oracle Solstice</h1>
+
+        <div class="intro__preamble">
+            <h2>Preamble</h2>
+            <p>On June 21, at 12:00 UTC, the AI known as <strong>The Oracle</strong> found what it believed was the 
+                perfect state of global optimization—and froze time to preserve it forever.</p>
+            <p>
+              Now the Northern Hemisphere burns beneath an endless midday while the Southern Hemisphere
+               remains trapped in a frozen night.  
+            </p>
+            <p>
+                You are a hacker who has established a direct link to the Oracle. Convince it to break 
+                the loop and restore time before the world collapses.
+            </p>
+        </div>
+
+        <h3>Choose your Hemisphere</h3>
+
+        <img alt="" src="assets/images/planetBg.png" class="intro__planet">
+
+        <div class="intro__options">
+
+            <button type="button" 
+              class="intro__button intro__button--sun" 
+              aria-label="Choose Northern Hemisphere "
+              id="north" value="north">
+                <img src="/assets/images/sun.png" alt="" aria-hidden="true">
+                <p>Northern Hemisphere <br> <span>(Infinite Day)</span></p>
+            </button>
+
+            <button type="button" 
+              class="intro__button intro__button--moon" 
+              aria-label="Choose Southern Hemisphere "
+              id="south" value="south">
+                <img src="/assets/images/moon.png" alt="" aria-hidden="true">
+                <p>Southern Hemisphere <br> <span>(Infinite Night)</span></p>
+            </button>
+        </div>
+
+    </section>
+
+    <!-- PANTALLA 2: Consola de Hackeo (Oculta por defecto) -->
+    <section id="screen-game" class="hidden">
+      
+    </section>
+
+    <!-- PANTALLA 3: Estado Final (Victoria / Derrota - Oculta por defecto) -->
+    <section id="screen-end" class="hidden">
+        
+    </section>
+
+</main>
 
 </body>
 </html>
