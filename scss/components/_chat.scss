@@ -1,0 +1,82 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.game{
+
+     &__chat{
+        margin-top: 1rem;
+        font-family: v.$fuenteBarlowCondensed;
+
+        width: 32rem;
+        height: 14rem; 
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.4); 
+        border: 1px solid v.$NeonGreen;
+        border-radius: 4px;
+
+        overflow-y: auto;
+        
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        //firefox
+        scrollbar-width: thin; 
+        scrollbar-color: rgba(102, 252, 241, 0.3) rgba(0, 0, 0, 0.2);
+
+        //edge/chrome/safari
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(102, 252, 241, 0.3); // Usando tu color cian
+            border-radius: 3px;
+            &:hover {
+                background: rgba(102, 252, 241, 0.6);
+            }
+        }
+
+    }
+
+    &__message{
+        margin: 1rem 0;
+
+        h4{
+            margin: 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        p{
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        &--oracle{
+            padding: 10px;
+            align-self: flex-start;
+            background: rgba(102, 252, 241, 0.05);
+            border-left: 3px solid v.$NeonCian;
+            h4{
+                color: v.$NeonCian;
+                text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        &--player{
+            padding: 10px;
+            align-self: flex-end;
+            background: rgba(252, 163, 77, 0.05);
+            border-right: 3px solid v.$NeonGold; 
+            text-align: right;
+            h4{
+                color: v.$NeonGold;
+                text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+}

@@ -1,0 +1,56 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+#screen-end {
+    width: 100vw;
+    height: 100vh;
+
+    background-repeat: no-repeat;   
+    background-position: center center;    
+    background-size: cover;
+
+    padding: 3rem;
+
+    &.victory {
+        --bg-image: url('/assets/images/victory-bg.webp');
+        @include overlay-end;
+    }
+
+    &.defeat {
+        --bg-image: url('/assets/images/defeat-bg.webp');
+        @include overlay-end;
+    }
+
+    @include m.tablet{
+        overflow-y: auto;           
+        padding-top: 20px;          
+        padding-bottom: 20px; 
+        justify-content: safe center;     
+    }
+
+}
+
+.end{
+
+    color: v.$white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &__title{
+        font-family: v.$fuenteOrbitron;
+        font-size: 3.5rem;  
+        text-shadow: 0 0 8px v.$NeonGold;
+        margin: 1rem 0;
+    }
+
+    &__subtitle{
+        font-family: v.$fuenteBarlowCondensed;
+        text-align: center;
+        font-size: 1.2rem;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        margin: 0;
+    }
+
+}

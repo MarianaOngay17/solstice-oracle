@@ -58,16 +58,128 @@
     </section>
 
     <!-- PANTALLA 2: Consola de Hackeo (Oculta por defecto) -->
-    <section id="screen-game" class="hidden">
-      
+    <section id="screen-game" class="game hidden">
+
+      <div class="game__oracleSection">
+        <h2>The Oracle Solstice</h2>
+        
+        <img src="assets/images/normal.jfif" alt="" id="avatar" class="game__avatar">
+
+        <div class="game__chat">
+
+            <div class="game__message game__message--oracle">
+                <h4>Oracle</h4>
+                <p>User detected. The chances of success are low, but I will proceed.</p>
+            </div>
+            
+        </div> <!--.game__chat-->
+
+      </div> <!--.game__oracleSection-->
+
+      <div class="game__panelSection hidden">
+
+        <div class="planetary-indicator">
+            <h3 class="planetary-indicator__title">Planetary Imbalance Indicator</h3>
+            
+            <div class="planetary-indicator__track-wrapper">
+                <span class="icon icon--sun" aria-hidden="true">☀️</span>
+                
+                <div class="planetary-indicator__track" id="clima-track">
+                    <div class="planetary-indicator__pointer" id="clima-pointer"></div>
+                </div>
+                
+                <span class="icon icon--moon" aria-hidden="true">🌙</span>
+            </div>
+
+            <div class="planetary-indicator__labels">
+                <span class="label label--north">North<br>burning</span>
+                <span class="label label--center">Perfect Balance</span>
+                <span class="label label--south">South<br>freezing</span>
+            </div>
+        </div>
+
+        <div class="cycles">
+            <h3>Remaining Cycles: </h3>
+            <span id="cycles">10</span>
+        </div>
+
+        <div class="turing-meter">
+            <h3 class="turing-meter__title">Turing Effect Meter</h3>
+            
+            <div class="turing-meter__container">
+                <div class="turing-meter__track">
+                    <div class="turing-meter__fill" id="turing-fill"></div>
+                </div>
+                
+                <span class="turing-meter__percentage" id="turing-percentage">0%</span>
+            </div>
+            
+            <span class="turing-meter__subtitle">Progress of Persuasion</span>
+        </div>
+
+        <div class="connection-status">
+            <span class="connection-status__label">Connection Status:</span>
+            
+            <div class="connection-status__value">
+                    <span id="connection-text">STABLE</span>
+                    
+                    <svg class="connection-status__icon" id="connection-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="5" cy="18" r="2" fill="currentColor"/>
+                        <path d="M10.5 12.5C8.9 10.9 6.4 10.9 4.8 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M14.5 8.5C11.7 5.7 7.3 5.7 4.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M18.5 4.5C14.6 0.6 8.4 0.6 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+        </div>
+
+        <div id="hemisphere-indicator-north" class="hemisphere hemisphere--north">
+            <p class="hemisphere__text">Northern Hemisphere - Infinite Day</p>
+            <span class="hemisphere__icon" aria-hidden="true">☀️</span>
+        </div>
+
+        <div id="hemisphere-indicator-south" class="hemisphere hemisphere--south hidden">
+            <p class="hemisphere__text">Southern Hemisphere - Infinite Night</p>
+            <span class="hemisphere__icon" aria-hidden="true">🌙</span>
+        </div>
+
+        <form class="game__controls" id="chat-form" autocomplete="off">
+            <div class="game__input-wrapper">
+                <input 
+                    type="text" 
+                    id="player-input" 
+                    class="game__input" 
+                    placeholder="Introduce tu argumento de persuasión..."
+                    aria-label="Mensaje para el Oráculo"
+                    required
+                >
+            </div>
+            
+            <button type="submit" class="game__btn-submit">
+                <svg class="game__btn-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M13 10V3L4 14H11V21L20 10H13Z"/>
+                </svg>
+                <span>ENVIAR</span>
+            </button>
+        </form>
+
+      </div> <!--.game__panelSection-->
+
     </section>
 
     <!-- PANTALLA 3: Estado Final (Victoria / Derrota - Oculta por defecto) -->
-    <section id="screen-end" class="hidden">
-        
+    <section id="screen-end" class="end hidden">
+        <div class="end__legend">
+            <h2 class="end__title" id="end-title">.</h2>
+            <p class="end__subtitle" id="end-subtitle"></p>
+        </div>
+
+        <button type="button" class="end__button" id="end-restart-btn" aria-label="Reiniciar juego">
+            <p id="end-btn-text"></p>
+        </button>
     </section>
 
 </main>
 
+    <script src="js/script.js"></script>
 </body>
 </html>

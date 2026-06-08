@@ -1,0 +1,72 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+
+#screen-game {
+    width: 100vw;
+    height: 100vh;
+
+    background-image:   linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.6)
+        ),
+        url('/assets/images/game-bg.png'); 
+    background-color: #0b0c10; 
+
+    background-repeat: no-repeat;   
+    background-position: center;    
+    background-size: cover;       
+
+    padding: 3rem;
+
+    @include m.tablet{
+        overflow-y: auto;           
+        padding-top: 20px;          
+        padding-bottom: 20px; 
+        justify-content: safe center;     
+    }
+
+}
+
+.game{
+    color: v.$white;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    @include m.tablet{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem
+    }
+
+    &__oracleSection{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        h2{
+            font-family: v.$fuenteOrbitron;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            font-size: 3rem;
+            margin: 0;
+        }
+    }
+
+    &__avatar{
+        width: 24rem;
+        height: auto;
+        border-radius: 50%;
+        border: 3px solid v.$NeonCian;
+        box-shadow: v.$NeonGreen 0px 8px 16px,  v.$NeonCianLight 0px 8px 24px,  v.$BlueTraslucid 0px 24px 50px;
+
+        &:hover{
+            box-shadow: v.$NeonCianLight 0px 8px 16px,  v.$NeonGreen 0px 8px 24px,  v.$BlueTraslucid 0px 24px 80px;
+        }
+    }
+   
+}

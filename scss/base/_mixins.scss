@@ -20,3 +20,7 @@
     padding-bottom: 40px;      
 }
 
+@mixin overlay-end{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), var(--bg-image);
+}
+

@@ -2,10 +2,13 @@
 @import 'base/mixins';
 @import 'base/base';
 
+@import 'layouts/intro';
+@import 'layouts/game';
+@import 'layouts/end';
 
-@import 'layouts/layout';
-
-// 3. Componentes Específicos del Juego
-// @import 'components/buttons';
-// @import 'components/chat';
-// @import 'components/meter';
+@import 'components/preamble';
+@import 'components/buttons';
+@import 'components/chat';
+@import 'components/panel';
+@import 'components/indicators';
+@import 'components/controls';
