@@ -1,0 +1,27 @@
+{
+  "name": "solstice-oracle",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A mystical, massive, and cold Artificial Intelligence known as **The Oracle** has taken control of the world's climate systems and global solar-redirection satellites. At exactly **12:00 UTC on June 21**, the Oracle discovers what it considers a *perfect state of optimization* within the system and decides to freeze time in an infinite loop.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarianaOngay17/solstice-oracle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarianaOngay17/solstice-oracle/issues"
+  },
+  "homepage": "https://github.com/MarianaOngay17/solstice-oracle#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}
