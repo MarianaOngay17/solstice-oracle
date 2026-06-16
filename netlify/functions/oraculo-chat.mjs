@@ -1,25 +1,28 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import serverless from 'serverless-http';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 dotenv.config();
 
 const app = express();
-app.use(cors()); // Permite que tu HTML local hable con este puerto
+app.use(cors()); 
 app.use(express.json());
 
-// Validar que la API Key exista antes de levantar el flujo
-if (!process.env.GEMINI_API_KEY) {
-    console.error("❌ ERROR CRÍTICO: Falta la GEMINI_API_KEY en el archivo .env");
-    process.exit(1);
+// Inicializar el cliente oficial de Google AI de forma perezosa/segura
+let ai = null;
+if (process.env.GEMINI_API_KEY) {
+    ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 }
 
-// Inicializar el cliente oficial de Google AI
-const ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
-app.post('/api/oraculo-chat', async (req, res) => {
+// Cambiamos la ruta a la que responderá en Netlify (las funciones usan /.netlify/functions/nombre-archivo)
+app.post('/.netlify/functions/oraculo-chat', async (req, res) => {
     try {
+        if (!ai) {
+            return res.status(500).json({ error: "Falta la configuración de la API Key en el servidor." });
+        }
+
         const { message, gameState } = req.body;
         const { hemisphere, climateValue, turingProgress, cycles } = gameState;
 
@@ -30,12 +33,11 @@ app.post('/api/oraculo-chat', async (req, res) => {
             }
         });
 
-        // Inyectamos el contexto de este turno específico justo antes del texto del usuario
         const promptConContexto = `
         [MÉTRICAS DEL TURNO ACTUAL]
         - Hemisferio: ${hemisphere}
         - Clima Actual (C): ${climateValue}
-        - Efecto Turing (T): ${turingProgress}%
+        - Primacía Turing: ${turingProgress}%
         - Ciclos Restantes: ${cycles}
         
         [MENSAJE DEL JUGADOR]
@@ -90,7 +92,5 @@ app.post('/api/oraculo-chat', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor del Oráculo corriendo de forma segura en http://localhost:${PORT}`);
-});
+// En lugar de app.listen, exportamos el handler de serverless
+export const handler = serverless(app);
