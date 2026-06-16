@@ -10,17 +10,19 @@ const app = express();
 app.use(cors()); 
 app.use(express.json());
 
-// Inicializar el cliente oficial de Google AI de forma perezosa/segura
+// Inicializar el cliente de Google AI de forma segura
 let ai = null;
 if (process.env.GEMINI_API_KEY) {
     ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 }
 
-// Cambiamos la ruta a la que responderá en Netlify (las funciones usan /.netlify/functions/nombre-archivo)
-app.post('/.netlify/functions/oraculo-chat', async (req, res) => {
+// Creamos un Router para gestionar las rutas de forma elástica en Netlify
+const router = express.Router();
+
+router.post('/oraculo-chat', async (req, res) => {
     try {
         if (!ai) {
-            return res.status(500).json({ error: "Falta la configuración de la API Key en el servidor." });
+            return res.status(500).json({ error: "Falta la configuración de la GEMINI_API_KEY en las variables de entorno de Netlify." });
         }
 
         const { message, gameState } = req.body;
@@ -92,5 +94,9 @@ app.post('/.netlify/functions/oraculo-chat', async (req, res) => {
     }
 });
 
-// En lugar de app.listen, exportamos el handler de serverless
+// Enrutamos de forma elástica para evitar problemas de 404 por desvíos de ruta de Netlify
+app.use('/api', router);
+app.use('/.netlify/functions/oraculo-chat', router);
+app.use('/', router);
+
 export const handler = serverless(app);
