@@ -48,11 +48,11 @@ To run this project locally, clone the repository and use the Netlify CLI to emm
    git clone [https://github.com/YOUR_USERNAME/solstice-oracle.git](https://github.com/YOUR_USERNAME/solstice-oracle.git)
    
 Install dependencies:
-
+  ```bash
   npm install
 
 Run the development server:
-
+  ```bash
   netlify dev
   
 Open http://localhost:8888 in your browser.
