@@ -50,9 +50,9 @@ To run this project locally, clone the repository and use the Netlify CLI to emm
 Install dependencies:
   ```bash
   npm install
-
+```
 Run the development server:
   ```bash
   netlify dev
-  
+ ``` 
 Open http://localhost:8888 in your browser.
