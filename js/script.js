@@ -199,7 +199,7 @@ function checkGameConditions() {
     if (cycles <= 0) {
         
         //Victoria Indulgente (Clima a salvo entre -15 y 15 Y Turing >= 80%)
-        if (climateValue >= -15 && climateValue <= 15 && turingProgress >= 80) {
+        if (climateValue >= -20 && climateValue <= 20 && turingProgress >= 80) {
             showFinalScreen("victory");
         } 
         // Derrota por Tiempo o Desbalance fuera de rango
